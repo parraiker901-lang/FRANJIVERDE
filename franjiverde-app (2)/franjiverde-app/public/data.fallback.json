@@ -1,0 +1,325 @@
+{
+  "standing": {
+    "pos": 15,
+    "pts": 10,
+    "played": 10,
+    "w": 2,
+    "d": 4,
+    "l": 4,
+    "gf": 14,
+    "ga": 17
+  },
+  "fixtures": [
+    {
+      "date": "2026-11-01T18:30:00+01:00",
+      "home": "Elche",
+      "away": "Valencia",
+      "isHome": true,
+      "comp": "LaLiga · J11"
+    },
+    {
+      "date": "2026-11-08T14:00:00+01:00",
+      "home": "Elche",
+      "away": "Real Betis",
+      "isHome": true,
+      "comp": "LaLiga · J12"
+    },
+    {
+      "date": "2026-11-23T21:00:00+01:00",
+      "home": "Levante",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "LaLiga · J13"
+    },
+    {
+      "date": "2026-11-29T12:00:00+01:00",
+      "home": "Elche",
+      "away": "Atlético de Madrid",
+      "isHome": true,
+      "comp": "LaLiga · J14",
+      "timeTBC": true
+    },
+    {
+      "date": "2026-12-06T12:00:00+01:00",
+      "home": "Osasuna",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "LaLiga · J15",
+      "timeTBC": true
+    },
+    {
+      "date": "2026-12-13T12:00:00+01:00",
+      "home": "Elche",
+      "away": "Sevilla",
+      "isHome": true,
+      "comp": "LaLiga · J16",
+      "timeTBC": true
+    },
+    {
+      "date": "2026-12-20T12:00:00+01:00",
+      "home": "Alavés",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "LaLiga · J17",
+      "timeTBC": true
+    },
+    {
+      "date": "2027-01-03T12:00:00+01:00",
+      "home": "Málaga",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "LaLiga · J18",
+      "timeTBC": true
+    },
+    {
+      "date": "2027-01-10T12:00:00+01:00",
+      "home": "Elche",
+      "away": "Getafe",
+      "isHome": true,
+      "comp": "LaLiga · J19",
+      "timeTBC": true
+    },
+    {
+      "date": "2027-01-17T12:00:00+01:00",
+      "home": "FC Barcelona",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "LaLiga · J20",
+      "timeTBC": true
+    }
+  ],
+  "results": [
+    {
+      "date": "2026-10-27T18:00:00+01:00",
+      "home": "Pinatar",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "Copa del Rey",
+      "hg": 1,
+      "ag": 3
+    },
+    {
+      "date": "2026-10-24T14:00:00+02:00",
+      "home": "Rayo Vallecano",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "LaLiga · J10",
+      "hg": 0,
+      "ag": 3
+    },
+    {
+      "date": "2026-10-17T16:15:00+02:00",
+      "home": "Villarreal",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "LaLiga · J9",
+      "hg": 0,
+      "ag": 0
+    },
+    {
+      "date": "2026-10-11T14:00:00+02:00",
+      "home": "Elche",
+      "away": "Celta",
+      "isHome": true,
+      "comp": "LaLiga · J8",
+      "hg": 0,
+      "ag": 0
+    },
+    {
+      "date": "2026-09-18T21:00:00+02:00",
+      "home": "Espanyol",
+      "away": "Elche",
+      "isHome": false,
+      "comp": "LaLiga · J7",
+      "hg": 1,
+      "ag": 3
+    }
+  ],
+  "lineups": [
+    {
+      "title": "Posibles alineaciones de Elche y Valencia para la jornada 11",
+      "source": "El Desmarque",
+      "date": "2026-10-30T07:17:00+01:00",
+      "xi": "Dituro; Sangaré, Chust, Redondo, Revivo; Gonzalo Villar, Lemar; Germán Valera, Cepeda, Morcillo; Fer Niño. Dudas: Fer Niño (lumbar). Baja: Aguado."
+    }
+  ],
+  "news": [
+    {
+      "title": "El Elche recibe al Valencia con cuatro jornadas sin perder",
+      "source": "El Desmarque",
+      "date": "2026-10-30T07:17:00+01:00"
+    },
+    {
+      "title": "Fer Niño llega con molestias lumbares al derbi valenciano",
+      "source": "El Desmarque",
+      "date": "2026-10-30T07:17:00+01:00"
+    },
+    {
+      "title": "El Elche remonta en Lo Pagán y pasa en Copa",
+      "source": "El Gol Digital",
+      "date": "2026-10-28T10:00:00+01:00"
+    }
+  ],
+  "table": [
+    {
+      "team": "Barcelona",
+      "pos": 1,
+      "pts": 27,
+      "pj": 10,
+      "gf": 40,
+      "ga": 11
+    },
+    {
+      "team": "Atlético de Madrid",
+      "pos": 2,
+      "pts": 25,
+      "pj": 10,
+      "gf": 20,
+      "ga": 8
+    },
+    {
+      "team": "Real Madrid",
+      "pos": 3,
+      "pts": 24,
+      "pj": 10,
+      "gf": 25,
+      "ga": 10
+    },
+    {
+      "team": "Betis",
+      "pos": 4,
+      "pts": 20,
+      "pj": 10,
+      "gf": 16,
+      "ga": 14
+    },
+    {
+      "team": "Real Sociedad",
+      "pos": 5,
+      "pts": 19,
+      "pj": 10,
+      "gf": 19,
+      "ga": 18
+    },
+    {
+      "team": "Sevilla",
+      "pos": 6,
+      "pts": 17,
+      "pj": 10,
+      "gf": 16,
+      "ga": 16
+    },
+    {
+      "team": "Alavés",
+      "pos": 7,
+      "pts": 12,
+      "pj": 10,
+      "gf": 14,
+      "ga": 11
+    },
+    {
+      "team": "Athletic",
+      "pos": 8,
+      "pts": 12,
+      "pj": 9,
+      "gf": 12,
+      "ga": 9
+    },
+    {
+      "team": "Celta",
+      "pos": 9,
+      "pts": 12,
+      "pj": 10,
+      "gf": 10,
+      "ga": 7
+    },
+    {
+      "team": "Villarreal",
+      "pos": 10,
+      "pts": 12,
+      "pj": 10,
+      "gf": 15,
+      "ga": 14
+    },
+    {
+      "team": "Deportivo",
+      "pos": 11,
+      "pts": 11,
+      "pj": 10,
+      "gf": 13,
+      "ga": 13
+    },
+    {
+      "team": "Osasuna",
+      "pos": 12,
+      "pts": 11,
+      "pj": 10,
+      "gf": 10,
+      "ga": 20
+    },
+    {
+      "team": "Racing",
+      "pos": 13,
+      "pts": 11,
+      "pj": 10,
+      "gf": 15,
+      "ga": 26
+    },
+    {
+      "team": "Levante",
+      "pos": 14,
+      "pts": 10,
+      "pj": 10,
+      "gf": 16,
+      "ga": 19
+    },
+    {
+      "team": "Elche",
+      "pos": 15,
+      "pts": 10,
+      "pj": 10,
+      "gf": 14,
+      "ga": 17
+    },
+    {
+      "team": "Rayo",
+      "pos": 16,
+      "pts": 9,
+      "pj": 9,
+      "gf": 12,
+      "ga": 20
+    },
+    {
+      "team": "Getafe",
+      "pos": 17,
+      "pts": 9,
+      "pj": 10,
+      "gf": 5,
+      "ga": 15
+    },
+    {
+      "team": "Espanyol",
+      "pos": 18,
+      "pts": 8,
+      "pj": 10,
+      "gf": 12,
+      "ga": 14
+    },
+    {
+      "team": "Valencia",
+      "pos": 19,
+      "pts": 6,
+      "pj": 10,
+      "gf": 7,
+      "ga": 17
+    },
+    {
+      "team": "Málaga",
+      "pos": 20,
+      "pts": 5,
+      "pj": 10,
+      "gf": 7,
+      "ga": 19
+    }
+  ]
+}

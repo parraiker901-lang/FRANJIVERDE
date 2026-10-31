@@ -1,0 +1,21 @@
+{
+  "name": "franjiverde-app",
+  "version": "1.0.0",
+  "description": "App web instalable en el móvil. Tiene un botón **Actualizar** que pide al servidor los partidos, la clasificación y los últimos titulares.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/core": "^8.6.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.0"
+  }
+}

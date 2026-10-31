@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Franjiverde: partidos, noticias y viajes del Elche CF</title>
+<meta name="description" content="Franjiverde, la app de los aficionados del Elche CF: calendario y resultados de LaLiga, noticias, alineaciones probables y planificador de viajes a los partidos fuera.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Franjiverde">
+<meta property="og:title" content="Franjiverde: partidos, noticias y viajes del Elche CF">
+<meta property="og:description" content="Calendario, resultados, noticias, alineaciones y viajes baratos a los partidos fuera del Elche CF.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Franjiverde","alternateName":"Franjiverde Elche CF","inLanguage":"es","description":"Calendario, resultados, noticias, alineaciones y viajes a los partidos del Elche CF."}</script>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0B6B3A">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#F2F5F3;--surface:#fff;--ink:#0F1C15;--muted:#5A6B61;--line:#D5DDD8;--green:#0B6B3A;--on:#fff;--soft:#E1EEE6;--warn:#B4540A;--bad:#A12828;--ok:#13733F;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#0C1511;--surface:#14211A;--ink:#E8F0EB;--muted:#93A69A;--line:#26382E;--green:#3FBF7A;--on:#07130C;--soft:#183326;--warn:#E39A52;--bad:#E57373;--ok:#5FD08F;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;
+ padding:env(safe-area-inset-top) max(16px,env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{margin:0;text-transform:uppercase;letter-spacing:.03em;font-stretch:condensed;line-height:1.05}
+h1{font-size:34px;color:var(--green)}
+h2{font-size:24px;margin:22px 0 8px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:14px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 12px;border-radius:4px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.main{background:var(--green);color:var(--on);border-color:var(--green)}
+.btn:disabled{opacity:.6}
+.status{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.hero{background:var(--green);color:var(--on);border-radius:4px;padding:16px;margin-top:12px}
+.hero small{display:block;opacity:.85;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.hero b{display:block;font-size:26px;text-transform:uppercase;line-height:1.1;margin:4px 0}
+.tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--line);margin-top:12px;position:sticky;top:env(safe-area-inset-top);background:var(--bg);z-index:2}
+.tabs button{flex:none;border:0;background:none;color:var(--muted);padding:11px 14px;font:600 14px system-ui;border-bottom:3px solid transparent;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--green)}
+.pane{display:none}.pane.on{display:block}
+.list{background:var(--surface);border:1px solid var(--line);border-radius:4px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-top:1px solid var(--line);align-items:center;flex-wrap:wrap}
+.row:first-child{border-top:0}
+.row .t{min-width:0}.row .m{font-size:12.5px;color:var(--muted)}
+.pill{font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid var(--line);margin-right:6px}
+.pill.h{background:var(--soft);color:var(--green);border-color:transparent}.pill.a{color:var(--warn);border-color:var(--warn)}
+.sc{font-variant-numeric:tabular-nums;font-weight:600}
+.stand{display:flex;gap:20px;flex-wrap:wrap;margin:10px 0}
+.stand div{font-size:30px;font-weight:700;line-height:1}.stand small{display:block;font-size:11px;font-weight:400;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.news a{color:var(--ink);text-decoration:none;font-weight:600}.news a:hover{text-decoration:underline}
+.note{font-size:13px;color:var(--muted);border-left:3px solid var(--warn);padding:2px 0 2px 10px;margin:10px 0}
+form.bs{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:14px}
+form.bs label{display:grid;gap:4px;font-size:12px;color:var(--muted)}
+form.bs input,form.bs select{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:7px 8px;width:100%;min-width:0}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.row.go{cursor:pointer}.row.go:hover{background:var(--soft)}
+.back{margin:14px 0 4px}
+.prob{display:grid;gap:8px;margin:8px 0}
+.prob div{display:grid;grid-template-columns:110px 1fr 44px;gap:10px;align-items:center;font-size:14px}
+.prob i{display:block;height:12px;border-radius:2px;background:var(--green)}
+.prob div:nth-child(2) i{background:var(--muted)}.prob div:nth-child(3) i{background:var(--warn)}
+.prob b{text-align:right;font-variant-numeric:tabular-nums}
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:14px;margin-top:14px}
+.sec h3{font-size:20px;margin-bottom:8px}
+.sec table{border-collapse:collapse;width:100%;font-size:14px}
+.sec th,.sec td{text-align:left;padding:7px 10px 7px 0;border-top:1px solid var(--line);vertical-align:top}
+.sec th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-top:0}
+.sec .scroll{overflow-x:auto}
+.best{color:var(--ok);font-weight:700}
+.sec input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:5px 8px;width:70px}
+footer{font-size:12px;color:var(--muted);margin-top:28px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <h1>Franjiverde</h1>
+    <div class="acts"><button class="btn" id="bell">Activar avisos</button><button class="btn main" id="upd">Actualizar</button></div>
+  </div>
+  <p class="status" id="status">Cargando…</p>
+  <p class="status">Franjiverde reúne el calendario y los resultados del Elche CF en LaLiga, las últimas noticias, las alineaciones probables y un planificador de viajes con alojamiento y transporte para los partidos fuera de casa.</p>
+  <div class="hero" id="hero"></div>
+  <div class="tabs" role="tablist" id="tabs">
+    <button role="tab" data-p="p1" aria-selected="true">Partidos</button>
+    <button role="tab" data-p="p2" aria-selected="false">Noticias</button>
+    <button role="tab" data-p="p4" aria-selected="false">Alineación</button>
+    <button role="tab" data-p="p3" aria-selected="false">Viajes</button>
+  </div>
+
+  <section class="pane on" id="p1">
+    <div class="stand" id="stand"></div>
+    <h2>Próximos</h2><div class="list" id="fx"></div>
+    <h2>Resultados</h2><div class="list" id="rs"></div>
+  </section>
+  <section class="pane" id="p2"><h2>Noticias</h2><div class="list news" id="nw"></div></section>
+  <section class="pane" id="p4">
+    <h2>Alineación</h2>
+    <p class="note" style="border-color:var(--green)">Aquí aparece cualquier noticia que hable de alineaciones, onces o convocatorias, al pulsar Actualizar. Si el servidor consigue leer el once en la noticia lo muestra; si no, verás el titular con su enlace. Hasta que el club la publique, ninguna es oficial.</p>
+    <div class="list" id="lu"></div>
+  </section>
+  <section class="pane" id="p5"><div id="det"></div></section>
+  <section class="pane" id="p3">
+    <h2>Viaje a los partidos fuera</h2>
+    <form class="bs" id="bs">
+      <label>Partido<select id="bsm"></select></label>
+      <label>Personas<input id="bsp" type="number" min="1" max="16" value="2"></label>
+      <label>Entrada<input id="bsi" type="date"></label>
+      <label>Salida<input id="bso" type="date"></label>
+      <label>Máximo por noche (€)<input id="bsx" type="number" min="10" step="5" value="50"></label>
+      <label>Sales desde (coche)<input id="bsf" type="text" value="Torrevieja"></label>
+      <label>Aeropuerto de salida (código)<input id="bsa" type="text" value="ALC" maxlength="3" style="text-transform:uppercase"></label>
+      <label>Estación de tren de salida<input id="bst" type="text" value="Elche"></label>
+    </form>
+    <div class="acts" style="margin-top:10px">
+      <a class="btn main" id="l-air" target="_blank" rel="noopener">Airbnb cerca del estadio</a>
+      <a class="btn" id="l-car" target="_blank" rel="noopener">Ruta en coche</a>
+      <a class="btn" id="l-pt" target="_blank" rel="noopener">Ruta en transporte público</a>
+      <a class="btn main" id="l-fl" target="_blank" rel="noopener">Vuelos más baratos</a>
+      <a class="btn main" id="l-tr" target="_blank" rel="noopener">Trenes más baratos</a>
+    </div>
+    <p class="note" id="bsn"></p>
+  </section>
+  <footer id="foot"></footer>
+</div>
+
+<script src="config.js"></script>
+<script src="matchdata.js"></script>
+<script>
+var $=function(i){return document.getElementById(i)};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var TZ='Europe/Madrid', DAY=86400000, DATA=null;
+var fmt=function(d,o){return new Intl.DateTimeFormat('es-ES',Object.assign({timeZone:TZ},o)).format(new Date(d))};
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function norm(s){return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+
+/* Estadios de los rivales, por palabra clave del nombre del equipo */
+var STADIUMS=[
+ ['levante','Estadi Ciutat de València','Valencia'],['valencia','Estadio de Mestalla','Valencia'],['osasuna','Estadio El Sadar','Pamplona'],
+ ['alaves','Estadio de Mendizorrotza','Vitoria-Gasteiz'],['malaga','Estadio La Rosaleda','Málaga'],['barcelona','Camp Nou','Barcelona'],
+ ['espanyol','RCDE Stadium','Cornellà de Llobregat'],['betis','Estadio Benito Villamarín','Sevilla'],['sevilla','Estadio Ramón Sánchez-Pizjuán','Sevilla'],
+ ['atletico','Estadio Metropolitano','Madrid'],['real madrid','Estadio Santiago Bernabéu','Madrid'],['rayo','Estadio de Vallecas','Madrid'],
+ ['getafe','Coliseum','Getafe'],['sociedad','Estadio de Anoeta','San Sebastián'],['athletic','San Mamés','Bilbao'],['celta','Estadio de Balaídos','Vigo'],
+ ['villarreal','Estadio de la Cerámica','Villarreal'],['racing','El Sardinero','Santander'],['deportivo','Estadio de Riazor','A Coruña']
+];
+function stadiumOf(name){var n=norm(name);for(var i=0;i<STADIUMS.length;i++){if(n.indexOf(STADIUMS[i][0])>=0)return STADIUMS[i]}return null}
+var AIRPORTS={'valencia':'VLC','pamplona':'PNA','vitoria-gasteiz':'VIT','malaga':'AGP','barcelona':'BCN','cornella de llobregat':'BCN','sevilla':'SVQ','madrid':'MAD','getafe':'MAD','san sebastian':'EAS','bilbao':'BIO','vigo':'VGO','villarreal':'VLC','santander':'SDR','a coruna':'LCG'};
+var TRAINCITY={'cornella de llobregat':'barcelona','getafe':'madrid','villarreal':'castellon-de-la-plana'};
+function rival(f){return f.isHome?f.away:f.home}
+function vs(f){return f.isHome?'Elche – '+f.away:f.home+' – Elche'}
+function when(f){return fmt(f.date,{weekday:'short',day:'numeric',month:'short'}).replace('.','')+(f.timeTBC?' · hora por confirmar':' · '+fmt(f.date,{hour:'2-digit',minute:'2-digit'}))}
+
+function render(d){
+  DATA=d;
+  var now=Date.now();
+  var up=d.fixtures.filter(function(f){return new Date(f.date).getTime()+2*3600e3>now}).sort(function(a,b){return new Date(a.date)-new Date(b.date)});
+  var nx=up[0];
+  $('hero').innerHTML=nx?'<small>Próximo partido · '+esc(nx.comp)+'</small><b>'+esc(vs(nx))+'</b><span>'+esc(when(nx))+(nx.isHome?' · Martínez Valero':'')+'</span>':'<small>Sin partidos próximos</small>';
+  var s=d.standing;
+  $('stand').innerHTML=s?'<div>'+s.pos+'º<small>Puesto</small></div><div>'+s.pts+'<small>Puntos</small></div><div>'+s.w+'-'+s.d+'-'+s.l+'<small>G-E-P</small></div><div>'+s.gf+':'+s.ga+'<small>Goles</small></div>':'';
+  window.UP=up;window.TABLE=d.table||[];
+  $('fx').innerHTML=up.map(function(f,i){return '<div class="row go" role="button" tabindex="0" data-i="'+i+'"><div class="t"><b>'+esc(vs(f))+'</b><div class="m"><span class="pill '+(f.isHome?'h':'a')+'">'+(f.isHome?'CASA':'FUERA')+'</span>'+esc(when(f))+' · '+esc(f.comp)+'</div></div><span class="m">Ver detalle ›</span></div>'}).join('')||'<div class="row">Sin partidos.</div>';
+  $('rs').innerHTML=(d.results||[]).map(function(f){var me=f.isHome?f.hg:f.ag,ot=f.isHome?f.ag:f.hg,r=me>ot?'G':me<ot?'P':'E';
+    return '<div class="row"><div class="t"><b>'+esc(vs(f))+'</b><div class="m">'+fmt(f.date,{day:'numeric',month:'short'}).replace('.','')+' · '+esc(f.comp)+'</div></div><span class="sc">'+f.hg+' – '+f.ag+' <span class="pill" style="margin:0 0 0 6px">'+r+'</span></span></div>'}).join('');
+  $('nw').innerHTML=(d.news||[]).map(function(n){return '<div class="row"><div class="t">'+(n.link?'<a href="'+esc(n.link)+'" target="_blank" rel="noopener">'+esc(n.title)+'</a>':'<b>'+esc(n.title)+'</b>')+'<div class="m">'+esc(n.source||'')+(n.date?' · '+fmt(n.date,{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'')+'</div></div></div>'}).join('')||'<div class="row">Sin noticias.</div>';
+  $('lu').innerHTML=(d.lineups||[]).map(function(n){return '<div class="row"><div class="t">'+(n.link?'<a href="'+esc(n.link)+'" target="_blank" rel="noopener" style="color:inherit;font-weight:600">'+esc(n.title)+'</a>':'<b>'+esc(n.title)+'</b>')+
+    '<div class="m">'+esc(n.source||'')+(n.date?' · '+fmt(n.date,{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'')+'</div>'+
+    (n.xi?'<p style="margin:8px 0 0">'+esc(n.xi)+'</p>':'<p class="m" style="margin:6px 0 0">No he podido leer el once en esta noticia. Ábrela para verlo.</p>')+'</div></div>'}).join('')||'<div class="row">Todavía no hay noticias de alineaciones.</div>';
+  var aw=up.filter(function(f){return !f.isHome});
+  var sel=$('bsm'),prev=sel.value;
+  sel.innerHTML=aw.map(function(f,i){return '<option value="'+i+'">'+fmt(f.date,{day:'numeric',month:'short'}).replace('.','')+' · '+esc(rival(f))+'</option>'}).join('');
+  if(prev&&sel.options[prev])sel.value=prev;
+  window.AWAY=aw;setDates();
+  $('status').textContent='Última actualización: '+fmt(d.updated,{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+(d.source==='live'?' · datos en directo':' · datos guardados');
+  $('foot').textContent=(d.notes||[]).join(' ');
+  checkReminder(up);
+}
+
+/* Buscador de viaje */
+function iso(t){return new Date(t).toISOString().slice(0,10)}
+function setDates(){var f=window.AWAY&&window.AWAY[$('bsm').value];if(!f)return;var t=new Date(f.date).getTime();$('bsi').value=iso(t);$('bso').value=iso(t+DAY);build()}
+function build(){
+  var f=window.AWAY&&window.AWAY[$('bsm').value];if(!f){$('bsn').textContent='No hay partidos fuera próximos.';return}
+  var st=stadiumOf(rival(f)),place=st?st[1]+', '+st[2]:rival(f),from=encodeURIComponent($('bsf').value||'Torrevieja');
+  $('l-air').href='https://www.airbnb.es/s/'+encodeURIComponent(place.replace(/ /g,'-'))+'/homes?checkin='+$('bsi').value+'&checkout='+$('bso').value+'&adults='+Math.max(1,+$('bsp').value||1)+'&price_max='+Math.max(10,+$('bsx').value||50);
+  var dest=encodeURIComponent(place);
+  $('l-car').href='https://www.google.com/maps/dir/?api=1&origin='+from+'&destination='+dest+'&travelmode=driving';
+  $('l-pt').href='https://www.google.com/maps/dir/?api=1&origin='+from+'&destination='+dest+'&travelmode=transit';
+  /* Vuelos y trenes: se abren ya buscados con tu salida, el destino y las fechas */
+  var city=st?st[2]:rival(f), code=AIRPORTS[norm(city)]||'', plain=function(s){return norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')};
+  var ori=($('bsa').value||'ALC').toUpperCase().slice(0,3), n=Math.max(1,+$('bsp').value||1);
+  $('l-fl').href='https://www.google.com/travel/flights?q='+encodeURIComponent('Vuelos de '+ori+' a '+(code||city)+' el '+$('bsi').value+' y vuelta el '+$('bso').value+' para '+n+' adultos');
+  var tcity=TRAINCITY[norm(city)]||plain(city);
+  $('l-tr').href='https://www.omio.es/trenes/'+plain($('bst').value||'Elche')+'/'+tcity;
+  $('bsn').textContent='Estadio: '+place+'. Vuelos y trenes se abren en el buscador ya con tu ruta; revisa allí fechas, horas y precio final, porque no los veo desde aquí. Airbnb confirma disponibilidad y precio; ordena por distancia o precio y mira el mapa. Comprueba antes la sede y la hora definitivas del partido.';
+}
+['bsm'].forEach(function(i){$(i).onchange=setDates});['bsi','bso','bsp','bsx','bsf','bsa','bst'].forEach(function(i){$(i).oninput=build});
+$('bs').onsubmit=function(e){e.preventDefault()};
+
+/* Avisos: solo cuando la app está abierta o se abre (sin servidor de notificaciones push) */
+function checkReminder(up){
+  if(!('Notification' in window)||Notification.permission!=='granted')return;
+  var h=up.filter(function(f){return f.isHome})[0];if(!h)return;
+  var left=new Date(h.date).getTime()-Date.now();
+  if(left>0&&left<=4*DAY){var key='n-'+h.date+'-'+new Date().toDateString();
+    if(lsGet(key))return;lsSet(key,'1');
+    var body=vs(h)+' · '+when(h)+'. Planifica entrada y transporte.';
+    if(navigator.serviceWorker&&navigator.serviceWorker.ready)navigator.serviceWorker.ready.then(function(r){r.showNotification('Elche en el Martínez Valero',{body:body,icon:'icon-192.png'})});
+    else new Notification('Elche en el Martínez Valero',{body:body});}
+}
+$('bell').onclick=function(){
+  if(!('Notification' in window)){$('bell').textContent='No disponible';return}
+  Notification.requestPermission().then(function(p){$('bell').textContent=p==='granted'?'Avisos activados':'Avisos bloqueados';if(DATA)render(DATA)});
+};
+if('Notification' in window&&Notification.permission==='granted')$('bell').textContent='Avisos activados';
+
+/* Carga */
+function load(refresh){
+  $('upd').disabled=true;$('upd').textContent='Actualizando…';
+  return fetch((window.API_BASE||'')+'/api/data'+(refresh?'?refresh=1':''),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+  .then(function(d){lsSet('last',JSON.stringify(d));render(d)})
+  .catch(function(){
+    var c=lsGet('last');
+    if(c){render(JSON.parse(c));$('status').textContent+=' · no se pudo actualizar, muestro lo último guardado';return}
+    /* Sin servidor ni copia previa: usa los datos incluidos en la propia app */
+    return fetch('data.fallback.json').then(function(r){return r.json()}).then(function(d){
+      d.updated=new Date().toISOString();d.source='fallback';
+      d.notes=['El servidor de datos no responde. Se muestran los datos incluidos en la app. Revisa que la función de Netlify esté publicada y que FOOTBALL_DATA_KEY esté configurada.'];
+      render(d);
+    }).catch(function(){$('status').textContent='No hay conexión ni datos guardados.'});
+  })
+  .then(function(){$('upd').disabled=false;$('upd').textContent='Actualizar'});
+}
+$('upd').onclick=function(){load(true)};
+document.addEventListener('visibilitychange',function(){if(!document.hidden)load(false)});
+setInterval(function(){if(!document.hidden)load(false)},5*60*1000);
+$('tabs').onclick=function(e){var b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b)});
+  document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id===b.dataset.p)})};
+/* ===== Detalle de partido ===== */
+var CANON=[['espanyol','espanyol'],['alaves','alaves'],['real madrid','real madrid'],['atletico','atletico'],['atleti','atletico'],['athletic','athletic'],['barcelona','barcelona'],['betis','betis'],['sociedad','sociedad'],['sevilla','sevilla'],['celta','celta'],['villarreal','villarreal'],['deportivo','deportivo'],['osasuna','osasuna'],['racing','racing'],['levante','levante'],['elche','elche'],['rayo','rayo'],['getafe','getafe'],['valencia','valencia'],['malaga','malaga']];
+function canon(n){var s=norm(n);for(var i=0;i<CANON.length;i++)if(s.indexOf(CANON[i][0])>=0)return CANON[i][1];return s}
+function plain(s){return norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+function pct(x){return Math.round(x*100)}
+function showPane(id){document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id===id)});document.querySelectorAll('#tabs button').forEach(function(x){x.setAttribute('aria-selected',x.dataset.p===id)});window.scrollTo(0,0)}
+
+/* Probabilidad estimada: modelo de Poisson con la clasificación actual (ataque y defensa de cada equipo) */
+function probs(f){
+  var T={};(window.TABLE||[]).forEach(function(r){T[canon(r.team)]=r});
+  var h=T[canon(f.home)],a=T[canon(f.away)];if(!h||!a||!h.pj||!a.pj)return null;
+  var G=0,P=0;Object.keys(T).forEach(function(k){G+=T[k].gf;P+=T[k].pj});var avg=G/P,K=5;
+  function rate(g,pj){return (g+K*avg)/(pj+K)/avg}
+  var lh=avg*1.12*rate(h.gf,h.pj)*rate(a.ga,a.pj),la=avg*0.9*rate(a.gf,a.pj)*rate(h.ga,h.pj);
+  function dist(l){var d=[Math.exp(-l)];for(var i=1;i<=10;i++)d[i]=d[i-1]*l/i;return d}
+  var dh=dist(lh),da=dist(la),w=0,x=0,l2=0,top=[];
+  for(var i=0;i<=10;i++)for(var j=0;j<=10;j++){var p=dh[i]*da[j];if(i>j)w+=p;else if(i===j)x+=p;else l2+=p;top.push([i+'-'+j,p])}
+  var s=w+x+l2;top.sort(function(u,v){return v[1]-u[1]});
+  return {home:w/s,draw:x/s,away:l2/s,goals:lh+la,top:top.slice(0,3)};
+}
+
+function h2hHtml(riv,key){
+  var h=window.H2H&&H2H[key];
+  if(!h)return '<p class="m" style="color:var(--muted)">Todavía no tengo guardados los enfrentamientos anteriores contra este rival. <a target="_blank" rel="noopener" href="https://www.google.com/search?q='+encodeURIComponent('Elche '+riv+' historial enfrentamientos resultados')+'">Buscarlos</a></p>';
+  var w=0,d=0,l=0,gf=0,ga=0;
+  h.list.forEach(function(m){if(m.comp==='Amistoso')return;var e=m.home==='Elche'?m.hg:m.ag,o=m.home==='Elche'?m.ag:m.hg;gf+=e;ga+=o;if(e>o)w++;else if(e<o)l++;else d++});
+  var rows=h.list.map(function(m){return '<tr><td>'+esc(m.when)+'</td><td>'+esc(m.comp)+'</td><td>'+esc(m.home)+' <b>'+m.hg+' – '+m.ag+'</b> '+esc(m.away)+'</td></tr>'}).join('');
+  return '<p><b>De los '+h.list.length+' partidos que muestro: '+w+(w===1?' victoria, ':' victorias, ')+d+(d===1?' empate y ':' empates y ')+l+(l===1?' derrota':' derrotas')+' del Elche</b>, con '+gf+' goles a favor y '+ga+' en contra.</p>'+
+    '<div class="scroll"><table><tr><th>Fecha</th><th>Competición</th><th>Resultado</th></tr>'+rows+'</table></div>'+
+    (h.note?'<p class="m" style="margin-top:8px;color:var(--muted)">'+esc(h.note)+'</p>':'')+'<p class="m" style="color:var(--muted)">Fuente: '+esc(h.source||'')+'</p>';
+}
+
+function travelCalc(key,n){
+  var t=window.TRAVEL&&TRAVEL[key],km=t?t.km:(window.KM_EST&&KM_EST[key]);if(!km)return null;
+  var fuel=Math.round(2*km*0.10),hrs=t?t.time:'≈ '+(km/90).toFixed(1).replace('.',',')+' h (cálculo mío)';
+  var opts=[{n:'Coche (gasolina ida y vuelta, sin peajes)',total:fuel,time:hrs,note:'El coste es el mismo vayáis 1 o '+n+'. Faltan peajes y aparcamiento.'}];
+  if(t&&t.bus)opts.push({n:'Autobús',total:Math.round(2*t.bus[0]*n),time:t.bus[2],note:'Precio mínimo encontrado: '+t.bus[0]+'–'+t.bus[1]+' € por trayecto y persona.'});
+  if(t&&t.train)opts.push({n:'Tren',total:Math.round(2*t.train[0]*n),time:t.train[2],note:'Desde '+t.train[0]+' € por trayecto y persona (hasta '+t.train[1]+' €).'});
+  if(t&&t.plane)opts.push({n:'Avión',total:Math.round(t.plane[0]*n),time:t.plane[1],note:'Desde '+t.plane[0]+' € por persona, ida y vuelta, según un buscador. Sin vuelo directo.'});
+  var min=opts.reduce(function(a,b){return b.total<a.total?b:a});
+  return {km:km,t:t,opts:opts,min:min,checked:!!(t&&t.checked)};
+}
+
+function drawTravel(){
+  var f=window.CUR;if(!f)return;var key=canon(rival(f)),n=Math.max(1,+$('dpn').value||1),c=travelCalc(key,n),box=$('trv');
+  if(!c){box.innerHTML='<p class="m" style="color:var(--muted)">No tengo la distancia de este viaje. Usa los botones de abajo.</p>';return}
+  var rows=c.opts.map(function(o){var best=o===c.min;return '<tr><td>'+esc(o.n)+(best?' <span class="best">· más barato</span>':'')+'</td><td>'+(o.total?'≈ '+o.total+' €':'?')+'</td><td>'+esc(o.time||'')+'</td><td>'+esc(o.note)+'</td></tr>'}).join('');
+  var verdict='Para '+n+' persona'+(n>1?'s':'')+', lo más barato de lo que tengo es: '+c.min.n.split(' (')[0].toLowerCase()+' (≈ '+c.min.total+' € en total).';
+  if(c.opts.length===1)verdict='Solo tengo el coste del coche (≈ '+c.min.total+' € de gasolina ida y vuelta). No he comprobado precios de autobús, tren ni avión para este viaje: míralos en los botones de abajo y compáralos.';
+  box.innerHTML='<p><b>'+c.km+' km'+(c.checked?'':' aproximados')+' · '+esc(c.opts[0].time)+' en coche desde Torrevieja</b></p>'+
+    '<p>'+esc(verdict)+'</p><div class="scroll"><table><tr><th>Medio</th><th>Total</th><th>Tiempo</th><th>Detalle</th></tr>'+rows+'</table></div>'+
+    '<p class="m" style="margin-top:8px;color:var(--muted)">Gasolina calculada a 0,10 € por km (estimación mía). '+(c.checked?'':'La distancia y la duración son un cálculo mío, sin comprobar. ')+'Los precios de transporte son de buscadores y cambian cada día.</p>'+(c.t&&c.t.tip?'<p class="note">'+esc(c.t.tip)+'</p>':'');
+  var nm=c.t&&c.t.names&&c.t.names.length?'<div class="scroll"><table><tr><th>Alojamiento</th><th>Zona</th><th>Desde</th></tr>'+c.t.names.map(function(x){return '<tr><td>'+esc(x.n)+'</td><td>'+esc(x.p)+'</td><td>'+x.price+' €/noche</td></tr>'}).join('')+'</table></div>':'';
+  $('acc').innerHTML=nm+'<p class="m" style="color:var(--muted);margin-top:8px">'+esc(c.t?c.t.namesNote:'No tengo nombres de alojamientos comprobados para esta ciudad. Usa la búsqueda de Airbnb de abajo, que ya viene filtrada por la zona del estadio.')+'</p>';
+  detailLinks(f,n);
+}
+
+function detailLinks(f,n){
+  var riv=rival(f),st=stadiumOf(riv),city=st?st[2]:riv,place=st?st[1]+', '+st[2]:riv,t=new Date(f.date).getTime(),ci=iso(t),co=iso(t+DAY);
+  var from=encodeURIComponent(($('bsf')&&$('bsf').value)||'Torrevieja'),dest=encodeURIComponent(place),code=AIRPORTS[norm(city)]||'';
+  var ori=((($('bsa')&&$('bsa').value)||'ALC')+'').toUpperCase().slice(0,3),mx=Math.max(10,+($('bsx')&&$('bsx').value)||50);
+  var tcity=TRAINCITY[norm(city)]||plain(city),tfrom=plain(($('bst')&&$('bst').value)||'Elche');
+  var L=[
+   ['Airbnb cerca del estadio','https://www.airbnb.es/s/'+encodeURIComponent(place.replace(/ /g,'-'))+'/homes?checkin='+ci+'&checkout='+co+'&adults='+n+'&price_max='+mx,true],
+   ['Ruta en coche','https://www.google.com/maps/dir/?api=1&origin='+from+'&destination='+dest+'&travelmode=driving'],
+   ['Ruta en transporte público','https://www.google.com/maps/dir/?api=1&origin='+from+'&destination='+dest+'&travelmode=transit'],
+   ['Vuelos más baratos','https://www.google.com/travel/flights?q='+encodeURIComponent('Vuelos de '+ori+' a '+(code||city)+' el '+ci+' y vuelta el '+co+' para '+n+' adultos'),true],
+   ['Trenes más baratos','https://www.omio.es/trenes/'+tfrom+'/'+tcity,true]];
+  $('dl').innerHTML=L.map(function(x){return '<a class="btn'+(x[2]?' main':'')+'" target="_blank" rel="noopener" href="'+esc(x[1])+'">'+esc(x[0])+'</a>'}).join('');
+}
+
+function showDetail(i){
+  var f=window.UP&&UP[i];if(!f)return;window.CUR=f;
+  var riv=rival(f),key=canon(riv),st=stadiumOf(riv),pr=probs(f);
+  var venue=f.isHome?'Estadio Martínez Valero, Elche':(st?st[1]+', '+st[2]:'Estadio por confirmar');
+  var h='<button class="btn back" id="bk">‹ Volver a partidos</button>'+
+   '<h2 style="margin-top:6px">'+esc(vs(f))+'</h2><p class="m" style="color:var(--muted)"><span class="pill '+(f.isHome?'h':'a')+'">'+(f.isHome?'CASA':'FUERA')+'</span>'+esc(when(f))+' · '+esc(f.comp)+' · '+esc(venue)+'</p>';
+  h+='<div class="sec"><h3>Probabilidades</h3>';
+  if(pr){
+    var L=f.isHome?['Gana Elche','Empate','Gana '+riv]:['Gana '+riv,'Empate','Gana Elche'],V=[pr.home,pr.draw,pr.away];
+    h+='<div class="prob">'+L.map(function(t,k){return '<div><span>'+esc(t)+'</span><i style="width:'+Math.max(2,Math.round(V[k]*100))+'%"></i><b>'+pct(V[k])+' %</b></div>'}).join('')+'</div>'+
+      '<p class="m" style="color:var(--muted)">Resultados más probables: '+pr.top.map(function(t){return t[0]+' ('+pct(t[1])+' %)'}).join(', ')+'. Goles esperados: '+pr.goals.toFixed(1).replace('.',',')+'.</p>';
+  }else h+='<p class="m" style="color:var(--muted)">No tengo la clasificación de alguno de los dos equipos para calcularla.</p>';
+  (window.EXTRA_PROB&&EXTRA_PROB[key]||[]).forEach(function(t){h+='<p class="m">'+esc(t)+'</p>'});
+  h+='<p class="m" style="color:var(--muted);margin-top:6px">Estimación propia con los goles a favor y en contra de cada equipo en la clasificación, y algo de ventaja para el local. Con solo 10 jornadas jugadas es orientativa, no una predicción fiable.</p></div>';
+  h+='<div class="sec"><h3>Enfrentamientos anteriores</h3>'+h2hHtml(riv,key)+'</div>';
+  if(!f.isHome){
+    h+='<div class="sec"><h3>Cómo ir</h3><p class="m">Personas: <input id="dpn" type="number" min="1" max="16" value="'+Math.max(1,+($('bsp')&&$('bsp').value)||2)+'"></p><div id="trv"></div></div>'+
+       '<div class="sec"><h3>Dónde dormir</h3><div id="acc"></div></div>'+
+       '<div class="sec"><h3>Buscar ya</h3><div class="acts" id="dl"></div><p class="m" style="color:var(--muted);margin-top:8px">Las fechas son el día del partido y el siguiente; cámbialas en la pestaña Viajes. Revisa allí disponibilidad, horas y precio final, que yo no los veo.</p></div>';
+  }
+  $('det').innerHTML=h;showPane('p5');
+  $('bk').onclick=function(){showPane('p1')};
+  if(!f.isHome){$('dpn').oninput=drawTravel;drawTravel()}
+}
+$('fx').onclick=function(e){var r=e.target.closest('.row.go');if(r)showDetail(+r.dataset.i)};
+$('fx').onkeydown=function(e){if(e.key!=='Enter'&&e.key!==' ')return;var r=e.target.closest('.row.go');if(r){e.preventDefault();showDetail(+r.dataset.i)}};
+
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
+load(false);
+</script>
+</body>
+</html>

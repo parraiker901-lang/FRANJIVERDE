@@ -1,0 +1,13 @@
+# Netlify sirve la carpeta public y ejecuta la función que responde a /api/data.
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[build.environment]
+  # @capacitor/cli exige Node 22 o superior
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/api/data"
+  to = "/.netlify/functions/data"
+  status = 200
